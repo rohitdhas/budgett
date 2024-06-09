@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Chart from "chart.js/auto";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Doughnut } from "react-chartjs-2";
@@ -37,7 +38,7 @@ export default function MonthlyStats(props: Props) {
   const options = {
     plugins: {
       datalabels: {
-        formatter: (value, _context) => {
+        formatter: (value: any) => {
           const percentage = ((value / totalAmount) * 100).toFixed(2);
           return `${percentage}%`;
         },
@@ -52,7 +53,7 @@ export default function MonthlyStats(props: Props) {
       },
       tooltip: {
         callbacks: {
-          label: function (context) {
+          label: function (context: any) {
             const value = context.raw;
             const percentage = ((value / totalAmount) * 100).toFixed(2);
             return `${currancyFormatter.format(value)} (${percentage}%)`;
@@ -75,7 +76,7 @@ export default function MonthlyStats(props: Props) {
       ) : (
         <div className="flex justify-between items-center flex-col md:flex-row">
           <div className="w-[70%]">
-            <Doughnut data={chartData} options={options} />
+            <Doughnut data={chartData} options={options as any} />
           </div>
           <CustomLegends data={data} />
         </div>
