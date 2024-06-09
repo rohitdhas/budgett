@@ -30,7 +30,7 @@ export default function ExpenseList(props: Props) {
   const { data, isLoading, refetch: fetchExpenses } = props;
 
   return (
-    <div className="bg-white rounded-md shadow-md py-4 px-6 md:mx-2 mt-2 md:mt-0 md:h-[70%] w-full md:w-[40%] overflow-auto">
+    <div className="bg-white rounded-md shadow-md py-4 px-6 md:mx-2 mt-2 md:mt-0 md:h-[70%] w-full md:w-[35%] overflow-auto">
       <Header fetchExpenses={fetchExpenses} />
       <List data={data} isLoading={isLoading} />
     </div>
@@ -110,7 +110,8 @@ const Header = (props: HeaderProps) => {
         <h3 className="text-lg font-bold">⚡️ Transactions</h3>
         <Select
           defaultValue="all"
-          style={{ width: 180 }}
+          style={{ width: 160 }}
+          size="small"
           onChange={(e) => updateCategory(e)}
           options={[
             { value: "all", label: "All" },

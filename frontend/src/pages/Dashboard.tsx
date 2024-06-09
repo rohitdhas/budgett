@@ -32,7 +32,7 @@ export default function Dashboard() {
   return (
     <div className="md:w-[80%] mx-auto h-full p-4">
       <Navbar />
-      <div className="flex justify-between items-center flex-col md:flex-row h-[90%]">
+      <div className="flex justify-between flex-col md:flex-row h-[90%]">
         <MonthlyStats data={monthlyStatsData} />
         <ExpenseList
           data={expenseListData}
