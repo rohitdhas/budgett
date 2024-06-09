@@ -56,7 +56,7 @@ export default function Dashboard() {
       <Tooltip title="Add Expense" placement="top">
         <div
           onClick={() => setIsAddExpenseFormOpen(true)}
-          className="bg-blue-500 hover:bg-blue-600 cursor-pointer py-3 px-4 rounded-full w-min text-white font-bold fixed bottom-10 right-10 md:right-40"
+          className="bg-blue-500 hover:bg-blue-600 cursor-pointer py-3 px-4 rounded-full w-min text-white font-bold fixed bottom-10 right-10 md:right-44"
         >
           <PlusOutlined />
         </div>

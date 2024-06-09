@@ -68,7 +68,7 @@ export default function MonthlyStats(props: Props) {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-md py-4 px-6 md:h-[70%] w-full md:w-[65%] overflow-auto">
+    <div className="bg-white rounded-md shadow-md py-4 px-6 md:h-full w-full md:w-[65%] overflow-auto">
       <h3 className="text-lg font-bold my-2">🗓️ This Month</h3>
       <>
         {props.isLoading ? (
