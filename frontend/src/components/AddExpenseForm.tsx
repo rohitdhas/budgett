@@ -17,9 +17,11 @@ export default function AddExpenseForm(props: Props) {
   const [form] = Form.useForm();
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [messageApi, contextHolder] = message.useMessage();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onSubmit = async () => {
     try {
+      setIsLoading(true);
       const values = await form.validateFields();
       await Expenses.createExpense({
         spentOn: values.spentOn,
@@ -28,6 +30,8 @@ export default function AddExpenseForm(props: Props) {
         subCategory: values.subCategory,
         userId: user.user?.id as string,
       });
+
+      setIsLoading(false);
 
       messageApi.open({
         type: "success",
@@ -111,7 +115,12 @@ export default function AddExpenseForm(props: Props) {
             </Form.Item>
           )}
           <Form.Item>
-            <Button type="primary" className="w-full" htmlType="submit">
+            <Button
+              loading={isLoading}
+              type="primary"
+              className="w-full"
+              htmlType="submit"
+            >
               Submit
             </Button>
           </Form.Item>

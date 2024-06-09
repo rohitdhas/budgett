@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Select, Spin, Tag } from "antd";
+import { Select, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { CATEGORY_ICONS, EXPENSE_CATEGORIES } from "../constants/categories";
@@ -162,9 +162,7 @@ type ListProps = {
 const List = (props: ListProps) => {
   if (props.isLoading) {
     return (
-      <div className="text-center my-4">
-        <Spin />
-      </div>
+      <p className="text-center text-lg text-slate-600 my-4">🔄 Loading...</p>
     );
   }
 

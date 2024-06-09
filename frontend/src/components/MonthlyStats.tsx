@@ -14,6 +14,7 @@ type DataItem = {
 
 type Props = {
   data: DataItem[];
+  isLoading: boolean;
 };
 
 export default function MonthlyStats(props: Props) {
@@ -67,20 +68,28 @@ export default function MonthlyStats(props: Props) {
   };
 
   return (
-    <div className="bg-white rounded-md shadow-md py-4 px-6 md:h-[70%] w-full md:w-[65%]">
+    <div className="bg-white rounded-md shadow-md py-4 px-6 md:h-[70%] w-full md:w-[65%] overflow-auto">
       <h3 className="text-lg font-bold my-2">🗓️ This Month</h3>
-      {data.length === 0 ? (
-        <p className="text-center text-slate-600 underline">
-          🎈 No data available
-        </p>
-      ) : (
-        <div className="flex justify-between items-center flex-col md:flex-row">
-          <div className="w-[70%]">
-            <Doughnut data={chartData} options={options as any} />
-          </div>
-          <CustomLegends data={data} />
-        </div>
-      )}
+      <>
+        {props.isLoading ? (
+          <p className="text-center text-lg text-slate-600">🔄 Loading...</p>
+        ) : (
+          <>
+            {data.length === 0 ? (
+              <p className="text-center text-slate-600 underline">
+                🎈 No data available
+              </p>
+            ) : (
+              <div className="flex justify-between items-center flex-col md:flex-row">
+                <div className="w-[65%]">
+                  <Doughnut data={chartData} options={options as any} />
+                </div>
+                <CustomLegends data={data} />
+              </div>
+            )}
+          </>
+        )}
+      </>
     </div>
   );
 }

@@ -17,8 +17,11 @@ export default function Dashboard() {
     isLoading: isLoadingExpenseList,
     refetch: refetchExpenseList,
   } = useFetchExpenses();
-  const { data: monthlyStatsData, refetch: refetchMonthlyStats } =
-    useFetchMonthlyStats();
+  const {
+    data: monthlyStatsData,
+    refetch: refetchMonthlyStats,
+    isLoading: isLoadingMonthlyStats,
+  } = useFetchMonthlyStats();
   const [isAddExpenseFormOpen, setIsAddExpenseFormOpen] = useState(false);
 
   const refetch = () => {
@@ -33,7 +36,10 @@ export default function Dashboard() {
     <div className="md:w-[80%] mx-auto h-full p-4">
       <Navbar />
       <div className="flex justify-between flex-col md:flex-row h-[90%]">
-        <MonthlyStats data={monthlyStatsData} />
+        <MonthlyStats
+          data={monthlyStatsData}
+          isLoading={isLoadingMonthlyStats}
+        />
         <ExpenseList
           data={expenseListData}
           isLoading={isLoadingExpenseList}
